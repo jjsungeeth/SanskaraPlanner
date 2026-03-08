@@ -1,0 +1,105 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+:root {
+  --rose: #8B3A52;
+  --rose-light: #C4768A;
+  --rose-pale: #F5E6EB;
+  --gold: #B8860B;
+  --gold-light: #E2C060;
+  --gold-pale: #FBF5E0;
+  --cream: #FDF6EE;
+  --cream-dark: #F0E5D8;
+  --ink: #2C1810;
+  --ink-muted: #7A5C52;
+}
+
+* { box-sizing: border-box; }
+
+body {
+  font-family: 'DM Sans', sans-serif;
+  background-color: var(--cream);
+  color: var(--ink);
+  -webkit-font-smoothing: antialiased;
+}
+
+h1, h2, h3, .font-display {
+  font-family: 'Cormorant Garamond', serif;
+}
+
+/* Scrollbar */
+::-webkit-scrollbar { width: 6px; }
+::-webkit-scrollbar-track { background: var(--cream-dark); }
+::-webkit-scrollbar-thumb { background: var(--rose-light); border-radius: 3px; }
+
+/* ── Reusable Components ── */
+@layer components {
+  .btn-primary {
+    @apply bg-rose-DEFAULT text-white px-5 py-2.5 rounded-lg font-body font-medium text-sm
+           hover:bg-rose-dark transition-colors duration-200 disabled:opacity-50 disabled:cursor-not-allowed;
+  }
+
+  .btn-secondary {
+    @apply bg-white border border-cream-darker text-ink px-5 py-2.5 rounded-lg font-body font-medium text-sm
+           hover:border-rose-light hover:text-rose-DEFAULT transition-colors duration-200;
+  }
+
+  .btn-gold {
+    @apply bg-gold text-white px-5 py-2.5 rounded-lg font-body font-medium text-sm
+           hover:bg-gold-dark transition-colors duration-200;
+  }
+
+  .card {
+    @apply bg-white rounded-2xl shadow-sm border border-cream-darker p-6;
+  }
+
+  .input {
+    @apply w-full bg-cream border border-cream-darker rounded-lg px-3.5 py-2.5 text-sm text-ink
+           placeholder:text-ink-light focus:outline-none focus:ring-2 focus:ring-rose-light/40
+           focus:border-rose-light transition-colors;
+  }
+
+  .label {
+    @apply block text-xs font-medium text-ink-muted uppercase tracking-wider mb-1.5;
+  }
+
+  .section-title {
+    @apply font-display text-2xl font-light text-rose-DEFAULT;
+  }
+
+  .page-title {
+    @apply font-display text-4xl font-light text-rose-DEFAULT;
+  }
+
+  .badge-booked {
+    @apply inline-flex items-center gap-1 text-xs font-medium bg-emerald-50 text-emerald-700
+           border border-emerald-200 px-2.5 py-1 rounded-full;
+  }
+
+  .badge-pending {
+    @apply inline-flex items-center gap-1 text-xs font-medium bg-gold-pale text-gold-dark
+           border border-gold-light px-2.5 py-1 rounded-full;
+  }
+
+  /* Ornamental divider */
+  .ornament {
+    @apply flex items-center gap-3 my-4;
+  }
+  .ornament::before,
+  .ornament::after {
+    content: '';
+    @apply flex-1 h-px bg-cream-darker;
+  }
+}
+
+/* ── Sidebar transition ── */
+.sidebar-enter { transform: translateX(-100%); }
+.sidebar-enter-active { transform: translateX(0); transition: transform 250ms ease; }
+
+/* ── Fade in animation ── */
+@keyframes fadeUp {
+  from { opacity: 0; transform: translateY(12px); }
+  to   { opacity: 1; transform: translateY(0); }
+}
+.fade-up { animation: fadeUp 0.4s ease forwards; }
