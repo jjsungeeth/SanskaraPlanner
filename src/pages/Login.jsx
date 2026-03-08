@@ -32,7 +32,7 @@ export default function Login() {
   }
 
   return (
-    <div className="min-h-screen bg-cream flex">
+    <div className="min-h-screen bg-scream flex">
       {/* Left panel — decorative */}
       <div
         className="hidden lg:flex flex-col justify-between w-1/2 p-12"
@@ -42,7 +42,7 @@ export default function Login() {
           <h1 className="font-display text-5xl text-white font-light leading-tight">
             Sanskara
           </h1>
-          <p className="text-rose-pale/70 font-display text-xl mt-1 italic">
+          <p className="text-srose-pale/70 font-display text-xl mt-1 italic">
             for the modern bride
           </p>
         </div>
@@ -50,7 +50,7 @@ export default function Login() {
         <div className="space-y-6">
           {['Plan every detail with grace', 'Collaborate with your planner', 'Your love story, beautifully organised'].map(t => (
             <div key={t} className="flex items-center gap-3">
-              <div className="w-1.5 h-1.5 rounded-full bg-gold-light flex-shrink-0" />
+              <div className="w-1.5 h-1.5 rounded-full bg-sgold-light flex-shrink-0" />
               <p className="text-white/80 font-body text-sm">{t}</p>
             </div>
           ))}
@@ -64,14 +64,14 @@ export default function Login() {
         <div className="w-full max-w-sm fade-up">
           {/* Mobile logo */}
           <div className="lg:hidden text-center mb-8">
-            <h1 className="font-display text-4xl text-rose-DEFAULT">Sanskara</h1>
-            <p className="text-ink-muted font-display italic">for the modern bride</p>
+            <h1 className="font-display text-4xl text-srose">Sanskara</h1>
+            <p className="text-sink-muted font-display italic">for the modern bride</p>
           </div>
 
-          <h2 className="font-display text-3xl text-ink mb-1">
+          <h2 className="font-display text-3xl text-sink mb-1">
             {mode === 'login' ? 'Welcome back' : mode === 'signup' ? 'Create account' : 'Reset password'}
           </h2>
-          <p className="text-ink-muted text-sm font-body mb-8">
+          <p className="text-sink-muted text-sm font-body mb-8">
             {mode === 'login' ? 'Sign in to your planner' : mode === 'signup' ? 'Start your planning journey' : 'We\'ll send you a reset link'}
           </p>
 
@@ -87,7 +87,7 @@ export default function Login() {
             <div>
               <label className="label">Email address</label>
               <div className="relative">
-                <Mail className="absolute left-3 top-1/2 -translate-y-1/2 w-4 h-4 text-ink-light" />
+                <Mail className="absolute left-3 top-1/2 -translate-y-1/2 w-4 h-4 text-sink-light" />
                 <input
                   type="email" required value={email}
                   onChange={e => setEmail(e.target.value)}
@@ -101,7 +101,7 @@ export default function Login() {
               <div>
                 <label className="label">Password</label>
                 <div className="relative">
-                  <Lock className="absolute left-3 top-1/2 -translate-y-1/2 w-4 h-4 text-ink-light" />
+                  <Lock className="absolute left-3 top-1/2 -translate-y-1/2 w-4 h-4 text-sink-light" />
                   <input
                     type={showPass ? 'text' : 'password'} required value={password}
                     onChange={e => setPassword(e.target.value)}
@@ -109,7 +109,7 @@ export default function Login() {
                     className="input pl-10 pr-10"
                   />
                   <button type="button" onClick={() => setShowPass(!showPass)}
-                    className="absolute right-3 top-1/2 -translate-y-1/2 text-ink-light hover:text-ink">
+                    className="absolute right-3 top-1/2 -translate-y-1/2 text-sink-light hover:text-sink">
                     {showPass ? <EyeOff className="w-4 h-4" /> : <Eye className="w-4 h-4" />}
                   </button>
                 </div>
@@ -124,17 +124,17 @@ export default function Login() {
           <div className="mt-6 text-center space-y-2">
             {mode === 'login' && (
               <>
-                <button onClick={() => setMode('reset')} className="text-xs text-ink-muted hover:text-rose-DEFAULT transition-colors">
+                <button onClick={() => setMode('reset')} className="text-xs text-sink-muted hover:text-srose transition-colors">
                   Forgot your password?
                 </button>
-                <div className="ornament"><span className="text-xs text-ink-light">or</span></div>
-                <button onClick={() => setMode('signup')} className="text-sm text-rose-DEFAULT hover:underline font-medium">
+                <div className="ornament"><span className="text-xs text-sink-light">or</span></div>
+                <button onClick={() => setMode('signup')} className="text-sm text-srose hover:underline font-medium">
                   Create a new account
                 </button>
               </>
             )}
             {mode !== 'login' && (
-              <button onClick={() => setMode('login')} className="text-sm text-rose-DEFAULT hover:underline font-medium">
+              <button onClick={() => setMode('login')} className="text-sm text-srose hover:underline font-medium">
                 ← Back to sign in
               </button>
             )}

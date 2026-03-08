@@ -37,8 +37,8 @@ export default function WeddingChapter() {
 
   if (loading) {
     return (
-      <div className="min-h-screen bg-cream flex items-center justify-center">
-        <div className="w-8 h-8 border-4 border-rose-pale border-t-rose-DEFAULT rounded-full animate-spin" />
+      <div className="min-h-screen bg-scream flex items-center justify-center">
+        <div className="w-8 h-8 border-4 border-srose-pale border-t-srose rounded-full animate-spin" />
       </div>
     )
   }
@@ -51,17 +51,17 @@ export default function WeddingChapter() {
   const chapterContext = { chapterId, chapter, weddingProfile }
 
   return (
-    <div className="min-h-screen bg-cream flex">
+    <div className="min-h-screen bg-scream flex">
       <Sidebar open={sidebarOpen} onClose={() => setSidebarOpen(false)} />
 
       {/* Main content */}
       <div className="flex-1 flex flex-col min-w-0">
         {/* Mobile top bar */}
-        <header className="lg:hidden bg-white border-b border-cream-darker px-4 py-3 flex items-center gap-3 sticky top-0 z-10">
-          <button onClick={() => setSidebarOpen(true)} className="text-ink-muted hover:text-ink">
+        <header className="lg:hidden bg-white border-b border-scream-darker px-4 py-3 flex items-center gap-3 sticky top-0 z-10">
+          <button onClick={() => setSidebarOpen(true)} className="text-sink-muted hover:text-sink">
             <Menu className="w-6 h-6" />
           </button>
-          <p className="font-display text-xl text-rose-DEFAULT">Sanskara</p>
+          <p className="font-display text-xl text-srose">Sanskara</p>
         </header>
 
         <main className="flex-1 overflow-y-auto p-6 md:p-8">

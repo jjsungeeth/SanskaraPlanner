@@ -159,7 +159,7 @@ export default function Moodboard({ chapterId }) {
     setItems(p => p.map(it => it.id === id ? { ...it, z_index: newZ } : it))
   }
 
-  if (loading) return <div className="p-8 text-ink-muted text-sm">Loading…</div>
+  if (loading) return <div className="p-8 text-sink-muted text-sm">Loading…</div>
 
   return (
     <div className="space-y-4 fade-up">
@@ -167,13 +167,13 @@ export default function Moodboard({ chapterId }) {
         <h2 className="page-title">Mood Board</h2>
         <div className="flex items-center gap-2 flex-wrap">
           {/* Tool toggle */}
-          <div className="flex rounded-lg border border-cream-darker overflow-hidden">
+          <div className="flex rounded-lg border border-scream-darker overflow-hidden">
             {[
               { id: 'move', icon: Move, label: 'Move' },
               { id: 'draw', icon: Pen, label: 'Draw' },
             ].map(t => (
               <button key={t.id} onClick={() => setTool(t.id)}
-                className={`flex items-center gap-1.5 px-3 py-2 text-xs font-body transition-colors ${tool === t.id ? 'bg-rose-DEFAULT text-white' : 'bg-white text-ink-muted hover:bg-cream'}`}>
+                className={`flex items-center gap-1.5 px-3 py-2 text-xs font-body transition-colors ${tool === t.id ? 'bg-srose text-white' : 'bg-white text-sink-muted hover:bg-scream'}`}>
                 <t.icon className="w-3.5 h-3.5" /> {t.label}
               </button>
             ))}
@@ -182,7 +182,7 @@ export default function Moodboard({ chapterId }) {
           {tool === 'draw' && (
             <>
               <input type="color" value={drawColor} onChange={e => setDrawColor(e.target.value)}
-                className="w-8 h-8 rounded cursor-pointer border border-cream-darker" title="Brush colour" />
+                className="w-8 h-8 rounded cursor-pointer border border-scream-darker" title="Brush colour" />
               <select value={drawSize} onChange={e => setDrawSize(Number(e.target.value))} className="input !w-auto !py-1 !px-2 text-xs">
                 {[1, 2, 3, 5, 8, 12].map(s => <option key={s} value={s}>{s}px</option>)}
               </select>
@@ -197,14 +197,14 @@ export default function Moodboard({ chapterId }) {
         </div>
       </div>
 
-      <p className="text-sm text-ink-muted font-body">
+      <p className="text-sm text-sink-muted font-body">
         Upload inspiration images, draw sketches, and move elements freely. Use Move mode to drag items, Draw mode to sketch.
       </p>
 
       {/* Board */}
       <div
         ref={boardRef}
-        className="relative w-full bg-white border-2 border-cream-darker rounded-2xl overflow-hidden"
+        className="relative w-full bg-white border-2 border-scream-darker rounded-2xl overflow-hidden"
         style={{ height: '600px', cursor: tool === 'move' ? 'default' : 'crosshair' }}
         onMouseMove={onBoardMouseMove}
         onMouseUp={onBoardMouseUp}
@@ -213,9 +213,9 @@ export default function Moodboard({ chapterId }) {
         {items.length === 0 && (
           <div className="absolute inset-0 flex items-center justify-center pointer-events-none">
             <div className="text-center">
-              <Image className="w-12 h-12 text-ink-light mx-auto mb-2" />
-              <p className="font-display text-xl text-ink-light">Your mood board is empty</p>
-              <p className="text-sm text-ink-light font-body mt-1">Upload images or draw to get started</p>
+              <Image className="w-12 h-12 text-sink-light mx-auto mb-2" />
+              <p className="font-display text-xl text-sink-light">Your mood board is empty</p>
+              <p className="text-sm text-sink-light font-body mt-1">Upload images or draw to get started</p>
             </div>
           </div>
         )}
@@ -224,7 +224,7 @@ export default function Moodboard({ chapterId }) {
         {items.filter(it => it.item_type === 'image').sort((a, b) => a.z_index - b.z_index).map(item => (
           <div
             key={item.id}
-            className={`absolute group cursor-move rounded-lg overflow-hidden border-2 transition-colors ${selectedId === item.id ? 'border-rose-DEFAULT' : 'border-transparent hover:border-rose-light'}`}
+            className={`absolute group cursor-move rounded-lg overflow-hidden border-2 transition-colors ${selectedId === item.id ? 'border-srose' : 'border-transparent hover:border-srose-light'}`}
             style={{ left: item.pos_x, top: item.pos_y, width: item.width, height: item.height, zIndex: item.z_index }}
             onMouseDown={e => startDrag(e, item)}
             onClick={() => setSelectedId(item.id)}

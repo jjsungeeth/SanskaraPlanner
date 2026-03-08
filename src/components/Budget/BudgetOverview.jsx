@@ -77,7 +77,7 @@ export default function BudgetOverview({ chapterId }) {
     .map(c => ({ name: c.label, value: actuals[c.key] || 0, color: c.color }))
     .filter(d => d.value > 0)
 
-  if (!budget) return <div className="p-8 text-ink-muted text-sm">Loading budget…</div>
+  if (!budget) return <div className="p-8 text-sink-muted text-sm">Loading budget…</div>
 
   return (
     <div className="space-y-6 fade-up max-w-4xl">
@@ -100,8 +100,8 @@ export default function BudgetOverview({ chapterId }) {
       {/* Overall summary cards */}
       <div className="grid grid-cols-1 sm:grid-cols-3 gap-4">
         {[
-          { label: 'Total Budget', value: fmt(overallBudget), icon: DollarSign, color: 'bg-rose-pale text-rose-DEFAULT', field: 'overall_budget' },
-          { label: 'Total Spent', value: fmt(totalActual), icon: TrendingUp, color: 'bg-gold-pale text-gold-dark' },
+          { label: 'Total Budget', value: fmt(overallBudget), icon: DollarSign, color: 'bg-srose-pale text-srose', field: 'overall_budget' },
+          { label: 'Total Spent', value: fmt(totalActual), icon: TrendingUp, color: 'bg-sgold-pale text-sgold-dark' },
           {
             label: diff >= 0 ? 'Remaining' : 'Over budget',
             value: fmt(Math.abs(diff)),
@@ -111,7 +111,7 @@ export default function BudgetOverview({ chapterId }) {
         ].map(card => (
           <div key={card.label} className="card">
             <div className="flex items-start justify-between mb-3">
-              <p className="text-xs text-ink-muted font-body uppercase tracking-wide">{card.label}</p>
+              <p className="text-xs text-sink-muted font-body uppercase tracking-wide">{card.label}</p>
               <div className={`w-8 h-8 rounded-lg flex items-center justify-center ${card.color}`}>
                 <card.icon className="w-4 h-4" />
               </div>
@@ -121,7 +121,7 @@ export default function BudgetOverview({ chapterId }) {
                 onChange={e => setEditVals(p => ({ ...p, [card.field]: e.target.value }))}
                 className="input text-xl font-display" placeholder="0" />
             ) : (
-              <p className="font-display text-2xl text-ink">{card.value}</p>
+              <p className="font-display text-2xl text-sink">{card.value}</p>
             )}
           </div>
         ))}
@@ -131,12 +131,12 @@ export default function BudgetOverview({ chapterId }) {
       {overallBudget > 0 && (
         <div className="card">
           <div className="flex items-center justify-between mb-2">
-            <p className="text-sm font-body text-ink-muted">Budget used</p>
-            <p className="text-sm font-medium text-ink font-body">{pct.toFixed(1)}%</p>
+            <p className="text-sm font-body text-sink-muted">Budget used</p>
+            <p className="text-sm font-medium text-sink font-body">{pct.toFixed(1)}%</p>
           </div>
-          <div className="h-3 bg-cream-dark rounded-full overflow-hidden">
+          <div className="h-3 bg-scream-dark rounded-full overflow-hidden">
             <div
-              className={`h-full rounded-full transition-all duration-500 ${pct > 90 ? 'bg-red-400' : pct > 70 ? 'bg-gold' : 'bg-rose-DEFAULT'}`}
+              className={`h-full rounded-full transition-all duration-500 ${pct > 90 ? 'bg-red-400' : pct > 70 ? 'bg-sgold' : 'bg-srose'}`}
               style={{ width: `${pct}%` }}
             />
           </div>
@@ -148,7 +148,7 @@ export default function BudgetOverview({ chapterId }) {
         <h3 className="section-title mb-4">By category</h3>
         <table className="w-full text-sm font-body">
           <thead>
-            <tr className="text-left text-ink-muted border-b border-cream-darker">
+            <tr className="text-left text-sink-muted border-b border-scream-darker">
               <th className="pb-2 font-medium">Category</th>
               <th className="pb-2 font-medium text-right">Budget</th>
               <th className="pb-2 font-medium text-right">Actual</th>
@@ -161,7 +161,7 @@ export default function BudgetOverview({ chapterId }) {
               const catActual = actuals[c.key] || 0
               const catDiff = catBudget - catActual
               return (
-                <tr key={c.key} className="border-b border-cream-darker/50 hover:bg-cream/50 transition-colors">
+                <tr key={c.key} className="border-b border-scream-darker/50 hover:bg-scream/50 transition-colors">
                   <td className="py-2.5 flex items-center gap-2">
                     <div className="w-3 h-3 rounded-full flex-shrink-0" style={{ background: c.color }} />
                     {c.label}
@@ -171,16 +171,16 @@ export default function BudgetOverview({ chapterId }) {
                       <input type="number" value={editVals[c.key]}
                         onChange={e => setEditVals(p => ({ ...p, [c.key]: e.target.value }))}
                         className="input text-right w-32 py-1 text-xs" placeholder="optional" />
-                    ) : catBudget > 0 ? fmt(catBudget) : <span className="text-ink-light italic">—</span>}
+                    ) : catBudget > 0 ? fmt(catBudget) : <span className="text-sink-light italic">—</span>}
                   </td>
                   <td className="py-2.5 text-right font-medium">{catActual > 0 ? fmt(catActual) : '—'}</td>
-                  <td className={`py-2.5 text-right font-medium ${catBudget > 0 ? (catDiff >= 0 ? 'text-emerald-600' : 'text-red-500') : 'text-ink-light'}`}>
+                  <td className={`py-2.5 text-right font-medium ${catBudget > 0 ? (catDiff >= 0 ? 'text-emerald-600' : 'text-red-500') : 'text-sink-light'}`}>
                     {catBudget > 0 ? (catDiff >= 0 ? `+${fmt(catDiff)}` : `-${fmt(Math.abs(catDiff))}`) : '—'}
                   </td>
                 </tr>
               )
             })}
-            <tr className="font-semibold bg-cream/50">
+            <tr className="font-semibold bg-scream/50">
               <td className="py-2.5">Total</td>
               <td className="py-2.5 text-right">{fmt(overallBudget)}</td>
               <td className="py-2.5 text-right">{fmt(totalActual)}</td>

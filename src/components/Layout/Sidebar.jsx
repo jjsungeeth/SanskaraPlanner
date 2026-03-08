@@ -21,27 +21,27 @@ export default function Sidebar({ open, onClose }) {
   return (
     <>
       {/* Overlay (mobile) */}
-      {open && <div className="fixed inset-0 bg-ink/40 z-20 lg:hidden" onClick={onClose} />}
+      {open && <div className="fixed inset-0 bg-sink/40 z-20 lg:hidden" onClick={onClose} />}
 
       <aside className={`
-        fixed top-0 left-0 h-full w-64 bg-white border-r border-cream-darker z-30 flex flex-col
+        fixed top-0 left-0 h-full w-64 bg-white border-r border-scream-darker z-30 flex flex-col
         transition-transform duration-250 ease-in-out
         ${open ? 'translate-x-0' : '-translate-x-full'} lg:translate-x-0 lg:static lg:z-auto
       `}>
         {/* Logo */}
-        <div className="px-6 py-5 border-b border-cream-darker flex items-center justify-between">
+        <div className="px-6 py-5 border-b border-scream-darker flex items-center justify-between">
           <div>
-            <p className="font-display text-xl text-rose-DEFAULT">Sanskara</p>
-            <p className="text-xs text-ink-muted font-body">Wedding Planner</p>
+            <p className="font-display text-xl text-srose">Sanskara</p>
+            <p className="text-xs text-sink-muted font-body">Wedding Planner</p>
           </div>
-          <button onClick={onClose} className="lg:hidden text-ink-muted hover:text-ink">
+          <button onClick={onClose} className="lg:hidden text-sink-muted hover:text-sink">
             <X className="w-5 h-5" />
           </button>
         </div>
 
         {/* Nav */}
         <nav className="flex-1 px-3 py-4 overflow-y-auto">
-          <p className="text-xs font-medium text-ink-light uppercase tracking-wider px-3 mb-2">Wedding</p>
+          <p className="text-xs font-medium text-sink-light uppercase tracking-wider px-3 mb-2">Wedding</p>
           {subchapters.map(({ path, label, icon: Icon }) => (
             <NavLink
               key={path}
@@ -50,8 +50,8 @@ export default function Sidebar({ open, onClose }) {
               className={({ isActive }) =>
                 `flex items-center gap-3 px-3 py-2.5 rounded-lg text-sm font-body mb-0.5 transition-colors ${
                   isActive
-                    ? 'bg-rose-pale text-rose-DEFAULT font-medium'
-                    : 'text-ink-muted hover:bg-cream hover:text-ink'
+                    ? 'bg-srose-pale text-srose font-medium'
+                    : 'text-sink-muted hover:bg-scream hover:text-sink'
                 }`
               }
             >
@@ -62,9 +62,9 @@ export default function Sidebar({ open, onClose }) {
         </nav>
 
         {/* Footer */}
-        <div className="px-3 py-4 border-t border-cream-darker">
+        <div className="px-3 py-4 border-t border-scream-darker">
           <NavLink to="/dashboard"
-            className="flex items-center gap-3 px-3 py-2.5 rounded-lg text-sm font-body text-ink-muted hover:bg-cream hover:text-ink transition-colors">
+            className="flex items-center gap-3 px-3 py-2.5 rounded-lg text-sm font-body text-sink-muted hover:bg-scream hover:text-sink transition-colors">
             <Home className="w-4 h-4" /> Back to dashboard
           </NavLink>
         </div>

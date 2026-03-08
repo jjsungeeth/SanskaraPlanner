@@ -4,17 +4,17 @@ import { Plus, Trash2, CalendarDays, Phone, CreditCard, Bell, Check, ChevronLeft
 import { format, startOfMonth, endOfMonth, eachDayOfInterval, isSameDay, isSameMonth, addMonths, subMonths, isToday, parseISO } from 'date-fns'
 
 const EVENT_TYPES = [
-  { value: 'reminder', label: 'Reminder', icon: Bell, color: 'bg-rose-pale text-rose-DEFAULT' },
-  { value: 'vendor_call', label: 'Vendor Call', icon: Phone, color: 'bg-gold-pale text-gold-dark' },
+  { value: 'reminder', label: 'Reminder', icon: Bell, color: 'bg-srose-pale text-srose' },
+  { value: 'vendor_call', label: 'Vendor Call', icon: Phone, color: 'bg-sgold-pale text-sgold-dark' },
   { value: 'payment', label: 'Payment Due', icon: CreditCard, color: 'bg-blue-50 text-blue-600' },
-  { value: 'custom', label: 'Custom', icon: CalendarDays, color: 'bg-cream-dark text-ink-muted' },
+  { value: 'custom', label: 'Custom', icon: CalendarDays, color: 'bg-scream-dark text-sink-muted' },
 ]
 
 const typeStyle = {
-  reminder:    'bg-rose-pale text-rose-DEFAULT border-rose-light/50',
-  vendor_call: 'bg-gold-pale text-gold-dark border-gold-light/50',
+  reminder:    'bg-srose-pale text-srose border-srose-light/50',
+  vendor_call: 'bg-sgold-pale text-sgold-dark border-sgold-light/50',
   payment:     'bg-blue-50 text-blue-600 border-blue-200',
-  custom:      'bg-cream-dark text-ink-muted border-cream-darker',
+  custom:      'bg-scream-dark text-sink-muted border-scream-darker',
 }
 
 export default function CalendarView({ chapterId }) {
@@ -77,7 +77,7 @@ export default function CalendarView({ chapterId }) {
     .filter(ev => new Date(ev.event_date) >= new Date() && !ev.is_complete)
     .slice(0, 10)
 
-  if (loading) return <div className="p-8 text-ink-muted text-sm">Loading…</div>
+  if (loading) return <div className="p-8 text-sink-muted text-sm">Loading…</div>
 
   return (
     <div className="space-y-6 fade-up max-w-4xl">
@@ -90,7 +90,7 @@ export default function CalendarView({ chapterId }) {
 
       {/* Add event form */}
       {showForm && (
-        <div className="card border-rose-light/50 fade-up">
+        <div className="card border-srose-light/50 fade-up">
           <h3 className="section-title text-xl mb-4">New event</h3>
           <form onSubmit={saveEvent} className="grid sm:grid-cols-2 gap-3">
             <div className="sm:col-span-2">
@@ -124,7 +124,7 @@ export default function CalendarView({ chapterId }) {
         {/* Calendar grid */}
         <div className="lg:col-span-3 card">
           <div className="flex items-center justify-between mb-4">
-            <h3 className="font-display text-xl text-rose-DEFAULT">{format(currentMonth, 'MMMM yyyy')}</h3>
+            <h3 className="font-display text-xl text-srose">{format(currentMonth, 'MMMM yyyy')}</h3>
             <div className="flex gap-1">
               <button onClick={() => setCurrentMonth(p => subMonths(p, 1))} className="btn-secondary !p-2"><ChevronLeft className="w-4 h-4" /></button>
               <button onClick={() => setCurrentMonth(new Date())} className="btn-secondary !py-1 !px-3 text-xs">Today</button>
@@ -135,7 +135,7 @@ export default function CalendarView({ chapterId }) {
           {/* Day headers */}
           <div className="grid grid-cols-7 mb-1">
             {['Su', 'Mo', 'Tu', 'We', 'Th', 'Fr', 'Sa'].map(d => (
-              <div key={d} className="text-center text-xs font-medium text-ink-muted py-1">{d}</div>
+              <div key={d} className="text-center text-xs font-medium text-sink-muted py-1">{d}</div>
             ))}
           </div>
 
@@ -149,16 +149,16 @@ export default function CalendarView({ chapterId }) {
                 <button key={day.toISOString()}
                   onClick={() => { setSelectedDate(day); setForm(p => ({ ...p, event_date: format(day, "yyyy-MM-dd'T'09:00") })) }}
                   className={`relative aspect-square flex flex-col items-center justify-start pt-1 rounded-lg text-sm transition-colors ${
-                    selected ? 'bg-rose-DEFAULT text-white' :
-                    isToday(day) ? 'bg-rose-pale text-rose-DEFAULT font-semibold' :
-                    !isSameMonth(day, currentMonth) ? 'text-ink-light' : 'hover:bg-cream text-ink'
+                    selected ? 'bg-srose text-white' :
+                    isToday(day) ? 'bg-srose-pale text-srose font-semibold' :
+                    !isSameMonth(day, currentMonth) ? 'text-sink-light' : 'hover:bg-scream text-sink'
                   }`}
                 >
                   <span className="text-xs">{format(day, 'd')}</span>
                   {dayEvents.length > 0 && (
                     <div className="flex gap-0.5 mt-0.5 flex-wrap justify-center">
                       {dayEvents.slice(0, 3).map(ev => (
-                        <div key={ev.id} className={`w-1.5 h-1.5 rounded-full ${selected ? 'bg-white/70' : ev.event_type === 'payment' ? 'bg-blue-400' : ev.event_type === 'vendor_call' ? 'bg-gold' : 'bg-rose-light'}`} />
+                        <div key={ev.id} className={`w-1.5 h-1.5 rounded-full ${selected ? 'bg-white/70' : ev.event_type === 'payment' ? 'bg-blue-400' : ev.event_type === 'vendor_call' ? 'bg-sgold' : 'bg-srose-light'}`} />
                       ))}
                     </div>
                   )}
@@ -168,13 +168,13 @@ export default function CalendarView({ chapterId }) {
           </div>
 
           {selectedDate && (
-            <div className="mt-4 pt-4 border-t border-cream-darker">
+            <div className="mt-4 pt-4 border-t border-scream-darker">
               <div className="flex items-center justify-between mb-2">
-                <p className="text-sm font-medium text-ink">{format(selectedDate, 'MMMM d, yyyy')}</p>
-                <button onClick={() => { setShowForm(true) }} className="text-xs text-rose-DEFAULT hover:underline">+ Add event</button>
+                <p className="text-sm font-medium text-sink">{format(selectedDate, 'MMMM d, yyyy')}</p>
+                <button onClick={() => { setShowForm(true) }} className="text-xs text-srose hover:underline">+ Add event</button>
               </div>
               {eventsOnDay(selectedDate).length === 0
-                ? <p className="text-xs text-ink-muted italic">Nothing scheduled</p>
+                ? <p className="text-xs text-sink-muted italic">Nothing scheduled</p>
                 : eventsOnDay(selectedDate).map(ev => (
                     <div key={ev.id} className={`flex items-center gap-2 text-xs px-2 py-1.5 rounded-lg border mb-1 ${typeStyle[ev.event_type]}`}>
                       <span className="flex-1 font-medium">{ev.title}</span>
@@ -189,9 +189,9 @@ export default function CalendarView({ chapterId }) {
 
         {/* Upcoming events list */}
         <div className="lg:col-span-2 space-y-3">
-          <h3 className="font-display text-xl text-rose-DEFAULT">Upcoming</h3>
+          <h3 className="font-display text-xl text-srose">Upcoming</h3>
           {upcomingEvents.length === 0
-            ? <div className="card text-center py-6"><p className="text-sm text-ink-muted italic">No upcoming events</p></div>
+            ? <div className="card text-center py-6"><p className="text-sm text-sink-muted italic">No upcoming events</p></div>
             : upcomingEvents.map(ev => {
                 const typeInfo = EVENT_TYPES.find(t => t.value === ev.event_type) || EVENT_TYPES[0]
                 const Icon = typeInfo.icon

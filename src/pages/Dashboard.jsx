@@ -42,8 +42,8 @@ export default function Dashboard() {
 
   if (loading) {
     return (
-      <div className="min-h-screen bg-cream flex items-center justify-center">
-        <div className="w-8 h-8 border-4 border-rose-pale border-t-rose-DEFAULT rounded-full animate-spin" />
+      <div className="min-h-screen bg-scream flex items-center justify-center">
+        <div className="w-8 h-8 border-4 border-srose-pale border-t-srose rounded-full animate-spin" />
       </div>
     )
   }
@@ -60,16 +60,16 @@ export default function Dashboard() {
   ]
 
   return (
-    <div className="min-h-screen bg-cream">
+    <div className="min-h-screen bg-scream">
       {/* Top bar */}
-      <header className="bg-white border-b border-cream-darker sticky top-0 z-10">
+      <header className="bg-white border-b border-scream-darker sticky top-0 z-10">
         <div className="max-w-5xl mx-auto px-6 py-4 flex items-center justify-between">
           <div>
-            <h1 className="font-display text-2xl text-rose-DEFAULT">Sanskara</h1>
-            <p className="text-xs text-ink-muted font-body -mt-0.5">Wedding Planner</p>
+            <h1 className="font-display text-2xl text-srose">Sanskara</h1>
+            <p className="text-xs text-sink-muted font-body -mt-0.5">Wedding Planner</p>
           </div>
           <div className="flex items-center gap-3">
-            <span className="text-sm text-ink-muted hidden sm:block">{session.user.email}</span>
+            <span className="text-sm text-sink-muted hidden sm:block">{session.user.email}</span>
             <button onClick={handleLogout} className="btn-secondary flex items-center gap-2 !px-3 !py-2">
               <LogOut className="w-4 h-4" /> <span className="hidden sm:block">Sign out</span>
             </button>
@@ -103,7 +103,7 @@ export default function Dashboard() {
               </h2>
               {weddingProfile?.wedding_date && (
                 <div className="flex items-center gap-2 mt-2 justify-center md:justify-start">
-                  <CalendarDays className="w-4 h-4 text-gold-light" />
+                  <CalendarDays className="w-4 h-4 text-sgold-light" />
                   <span className="text-white/80 font-body text-sm">
                     {format(new Date(weddingProfile.wedding_date), 'MMMM d, yyyy')}
                   </span>
@@ -123,7 +123,7 @@ export default function Dashboard() {
 
         {/* Chapters */}
         <div>
-          <h3 className="font-display text-2xl text-rose-DEFAULT mb-4">Your chapters</h3>
+          <h3 className="font-display text-2xl text-srose mb-4">Your chapters</h3>
           <div className="grid sm:grid-cols-2 gap-4">
             {availableChapters.map(ch => {
               const purchased = chapters.find(c => c.chapter_type === ch.id && c.is_active)
@@ -132,25 +132,25 @@ export default function Dashboard() {
                   key={ch.id}
                   onClick={() => purchased && navigate(`/chapter/${purchased.id}`)}
                   className={`card flex items-center gap-4 transition-all ${
-                    purchased ? 'cursor-pointer hover:shadow-md hover:border-rose-light/50 group' : 'opacity-60'
+                    purchased ? 'cursor-pointer hover:shadow-md hover:border-srose-light/50 group' : 'opacity-60'
                   }`}
                 >
                   <div className={`w-14 h-14 rounded-xl flex items-center justify-center text-2xl flex-shrink-0 ${
-                    purchased ? 'bg-rose-pale' : 'bg-cream-dark'
+                    purchased ? 'bg-srose-pale' : 'bg-scream-dark'
                   }`}>
-                    {purchased ? ch.icon : <Lock className="w-5 h-5 text-ink-light" />}
+                    {purchased ? ch.icon : <Lock className="w-5 h-5 text-sink-light" />}
                   </div>
                   <div className="flex-1 min-w-0">
-                    <p className="font-body font-medium text-ink">{ch.label}</p>
-                    <p className="text-xs text-ink-muted mt-0.5">{purchased ? ch.description : ch.description}</p>
+                    <p className="font-body font-medium text-sink">{ch.label}</p>
+                    <p className="text-xs text-sink-muted mt-0.5">{purchased ? ch.description : ch.description}</p>
                     {purchased && (
-                      <p className="text-xs text-rose-light mt-1">
+                      <p className="text-xs text-srose-light mt-1">
                         Active until {format(new Date(purchased.end_date), 'MMM d, yyyy')}
                       </p>
                     )}
                   </div>
                   {purchased && (
-                    <ChevronRight className="w-5 h-5 text-rose-light group-hover:text-rose-DEFAULT transition-colors flex-shrink-0" />
+                    <ChevronRight className="w-5 h-5 text-srose-light group-hover:text-srose transition-colors flex-shrink-0" />
                   )}
                 </div>
               )
@@ -159,9 +159,9 @@ export default function Dashboard() {
         </div>
 
         {/* Quick tips */}
-        <div className="card border-gold-light/50 bg-gold-pale/30">
-          <p className="font-display text-lg text-gold-dark mb-2">Getting started</p>
-          <ol className="space-y-1 text-sm text-ink-muted font-body list-decimal list-inside">
+        <div className="card border-sgold-light/50 bg-sgold-pale/30">
+          <p className="font-display text-lg text-sgold-dark mb-2">Getting started</p>
+          <ol className="space-y-1 text-sm text-sink-muted font-body list-decimal list-inside">
             <li>Open your Wedding chapter to set your overall budget</li>
             <li>Add guests to your guestlist</li>
             <li>Get quotes from vendors and caterers</li>

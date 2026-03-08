@@ -43,7 +43,7 @@ export default function SeatingPlan({ chapterId }) {
 
   const unassigned = byTable[0] || []
 
-  if (loading) return <div className="p-8 text-ink-muted text-sm">Loading…</div>
+  if (loading) return <div className="p-8 text-sink-muted text-sm">Loading…</div>
 
   return (
     <div className="space-y-5 fade-up max-w-4xl">
@@ -57,20 +57,20 @@ export default function SeatingPlan({ chapterId }) {
         </div>
       </div>
 
-      <p className="text-sm text-ink-muted font-body">
+      <p className="text-sm text-sink-muted font-body">
         Assign guests to tables using the dropdown on each guest. Head to the Guestlist to add guests first.
       </p>
 
       {/* Unassigned */}
       {unassigned.length > 0 && (
-        <div className="card border-gold-light/50 bg-gold-pale/20">
-          <p className="label text-gold-dark mb-3">Unassigned guests ({unassigned.length})</p>
+        <div className="card border-sgold-light/50 bg-sgold-pale/20">
+          <p className="label text-sgold-dark mb-3">Unassigned guests ({unassigned.length})</p>
           <div className="flex flex-wrap gap-2">
             {unassigned.map(g => (
-              <div key={g.id} className="flex items-center gap-2 bg-white rounded-lg px-3 py-1.5 border border-cream-darker text-sm">
-                <span className="font-body text-ink">{g.first_name} {g.last_name}</span>
+              <div key={g.id} className="flex items-center gap-2 bg-white rounded-lg px-3 py-1.5 border border-scream-darker text-sm">
+                <span className="font-body text-sink">{g.first_name} {g.last_name}</span>
                 <select value="" onChange={e => assignTable(g.id, Number(e.target.value))}
-                  className="text-xs border-0 bg-transparent text-ink-muted cursor-pointer">
+                  className="text-xs border-0 bg-transparent text-sink-muted cursor-pointer">
                   <option value="">Assign table…</option>
                   {Array.from({ length: numTables }, (_, i) => i + 1).map(n => (
                     <option key={n} value={n}>Table {n}</option>
@@ -89,16 +89,16 @@ export default function SeatingPlan({ chapterId }) {
           return (
             <div key={tableNum} className="card !p-4">
               <div className="flex items-center gap-2 mb-3">
-                <LayoutGrid className="w-4 h-4 text-rose-light" />
-                <p className="font-body font-semibold text-ink">Table {tableNum}</p>
-                <span className="ml-auto text-xs text-ink-muted">{tableGuests.length} guests</span>
+                <LayoutGrid className="w-4 h-4 text-srose-light" />
+                <p className="font-body font-semibold text-sink">Table {tableNum}</p>
+                <span className="ml-auto text-xs text-sink-muted">{tableGuests.length} guests</span>
               </div>
               {tableGuests.length === 0
-                ? <p className="text-xs text-ink-light italic">Empty</p>
+                ? <p className="text-xs text-sink-light italic">Empty</p>
                 : tableGuests.map(g => (
-                    <div key={g.id} className="flex items-center justify-between py-1 border-b border-cream-darker/50 last:border-0">
-                      <span className="text-sm font-body text-ink truncate flex-1">{g.first_name} {g.last_name}</span>
-                      <button onClick={() => assignTable(g.id, null)} className="text-xs text-ink-light hover:text-red-500 ml-2 flex-shrink-0">×</button>
+                    <div key={g.id} className="flex items-center justify-between py-1 border-b border-scream-darker/50 last:border-0">
+                      <span className="text-sm font-body text-sink truncate flex-1">{g.first_name} {g.last_name}</span>
+                      <button onClick={() => assignTable(g.id, null)} className="text-xs text-sink-light hover:text-red-500 ml-2 flex-shrink-0">×</button>
                     </div>
                   ))
               }

@@ -20,10 +20,10 @@ function ProtectedRoute({ children }) {
 
 function LoadingScreen() {
   return (
-    <div className="min-h-screen flex items-center justify-center bg-cream">
+    <div className="min-h-screen flex items-center justify-center bg-scream">
       <div className="text-center">
-        <div className="w-12 h-12 border-4 border-rose-pale border-t-rose-DEFAULT rounded-full animate-spin mx-auto mb-4" />
-        <p className="font-display text-xl text-rose-DEFAULT">Loading Sanskara…</p>
+        <div className="w-12 h-12 border-4 border-srose-pale border-t-srose rounded-full animate-spin mx-auto mb-4" />
+        <p className="font-display text-xl text-srose">Loading Sanskara…</p>
       </div>
     </div>
   )

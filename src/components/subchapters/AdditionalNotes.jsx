@@ -28,7 +28,7 @@ export default function AdditionalNotes({ chapterId }) {
     <div className="space-y-5 fade-up max-w-2xl">
       <h2 className="page-title">Additional Notes</h2>
       <div className="card">
-        <p className="text-sm text-ink-muted font-body mb-4">
+        <p className="text-sm text-sink-muted font-body mb-4">
           Use this space for anything that doesn't fit elsewhere — ideas, thoughts, to-do lists, contacts.
         </p>
         <textarea

@@ -4,15 +4,15 @@
 
 :root {
   --rose: #8B3A52;
-  --rose-light: #C4768A;
-  --rose-pale: #F5E6EB;
+  --srose-light: #C4768A;
+  --srose-pale: #F5E6EB;
   --gold: #B8860B;
-  --gold-light: #E2C060;
-  --gold-pale: #FBF5E0;
+  --sgold-light: #E2C060;
+  --sgold-pale: #FBF5E0;
   --cream: #FDF6EE;
-  --cream-dark: #F0E5D8;
+  --scream-dark: #F0E5D8;
   --ink: #2C1810;
-  --ink-muted: #7A5C52;
+  --sink-muted: #7A5C52;
 }
 
 * { box-sizing: border-box; }
@@ -30,46 +30,46 @@ h1, h2, h3, .font-display {
 
 /* Scrollbar */
 ::-webkit-scrollbar { width: 6px; }
-::-webkit-scrollbar-track { background: var(--cream-dark); }
-::-webkit-scrollbar-thumb { background: var(--rose-light); border-radius: 3px; }
+::-webkit-scrollbar-track { background: var(--scream-dark); }
+::-webkit-scrollbar-thumb { background: var(--srose-light); border-radius: 3px; }
 
 /* ── Reusable Components ── */
 @layer components {
   .btn-primary {
-    @apply bg-rose-DEFAULT text-white px-5 py-2.5 rounded-lg font-body font-medium text-sm
-           hover:bg-rose-dark transition-colors duration-200 disabled:opacity-50 disabled:cursor-not-allowed;
+    @apply bg-srose text-white px-5 py-2.5 rounded-lg font-body font-medium text-sm
+           hover:bg-srose-dark transition-colors duration-200 disabled:opacity-50 disabled:cursor-not-allowed;
   }
 
   .btn-secondary {
-    @apply bg-white border border-cream-darker text-ink px-5 py-2.5 rounded-lg font-body font-medium text-sm
-           hover:border-rose-light hover:text-rose-DEFAULT transition-colors duration-200;
+    @apply bg-white border border-scream-darker text-sink px-5 py-2.5 rounded-lg font-body font-medium text-sm
+           hover:border-srose-light hover:text-srose transition-colors duration-200;
   }
 
   .btn-gold {
-    @apply bg-gold text-white px-5 py-2.5 rounded-lg font-body font-medium text-sm
-           hover:bg-gold-dark transition-colors duration-200;
+    @apply bg-sgold text-white px-5 py-2.5 rounded-lg font-body font-medium text-sm
+           hover:bg-sgold-dark transition-colors duration-200;
   }
 
   .card {
-    @apply bg-white rounded-2xl shadow-sm border border-cream-darker p-6;
+    @apply bg-white rounded-2xl shadow-sm border border-scream-darker p-6;
   }
 
   .input {
-    @apply w-full bg-cream border border-cream-darker rounded-lg px-3.5 py-2.5 text-sm text-ink
-           placeholder:text-ink-light focus:outline-none focus:ring-2 focus:ring-rose-light/40
-           focus:border-rose-light transition-colors;
+    @apply w-full bg-scream border border-scream-darker rounded-lg px-3.5 py-2.5 text-sm text-sink
+           placeholder:text-sink-light focus:outline-none focus:ring-2 focus:ring-srose-light/40
+           focus:border-srose-light transition-colors;
   }
 
   .label {
-    @apply block text-xs font-medium text-ink-muted uppercase tracking-wider mb-1.5;
+    @apply block text-xs font-medium text-sink-muted uppercase tracking-wider mb-1.5;
   }
 
   .section-title {
-    @apply font-display text-2xl font-light text-rose-DEFAULT;
+    @apply font-display text-2xl font-light text-srose;
   }
 
   .page-title {
-    @apply font-display text-4xl font-light text-rose-DEFAULT;
+    @apply font-display text-4xl font-light text-srose;
   }
 
   .badge-booked {
@@ -78,8 +78,8 @@ h1, h2, h3, .font-display {
   }
 
   .badge-pending {
-    @apply inline-flex items-center gap-1 text-xs font-medium bg-gold-pale text-gold-dark
-           border border-gold-light px-2.5 py-1 rounded-full;
+    @apply inline-flex items-center gap-1 text-xs font-medium bg-sgold-pale text-sgold-dark
+           border border-sgold-light px-2.5 py-1 rounded-full;
   }
 
   /* Ornamental divider */
@@ -89,7 +89,7 @@ h1, h2, h3, .font-display {
   .ornament::before,
   .ornament::after {
     content: '';
-    @apply flex-1 h-px bg-cream-darker;
+    @apply flex-1 h-px bg-scream-darker;
   }
 }
 

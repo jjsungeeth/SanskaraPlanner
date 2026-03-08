@@ -104,15 +104,15 @@ export default function Onboarding() {
   ]
 
   return (
-    <div className="min-h-screen bg-cream flex items-center justify-center p-6">
+    <div className="min-h-screen bg-scream flex items-center justify-center p-6">
       <div className="w-full max-w-md fade-up">
         {/* Header */}
         <div className="text-center mb-10">
-          <div className="w-14 h-14 bg-rose-pale rounded-full flex items-center justify-center mx-auto mb-4">
-            <Heart className="w-7 h-7 text-rose-DEFAULT fill-rose-light" />
+          <div className="w-14 h-14 bg-srose-pale rounded-full flex items-center justify-center mx-auto mb-4">
+            <Heart className="w-7 h-7 text-srose fill-srose-light" />
           </div>
-          <h1 className="font-display text-4xl text-rose-DEFAULT font-light">Welcome!</h1>
-          <p className="text-ink-muted text-sm mt-1 font-body">Let's set up your wedding planner</p>
+          <h1 className="font-display text-4xl text-srose font-light">Welcome!</h1>
+          <p className="text-sink-muted text-sm mt-1 font-body">Let's set up your wedding planner</p>
         </div>
 
         {/* Step indicators */}
@@ -120,16 +120,16 @@ export default function Onboarding() {
           {steps.map((s, i) => (
             <div key={s.num} className="flex items-center gap-2">
               <div className={`w-8 h-8 rounded-full flex items-center justify-center text-xs font-medium transition-all ${
-                step === s.num ? 'bg-rose-DEFAULT text-white shadow-lg' :
-                step > s.num ? 'bg-rose-light text-white' :
-                'bg-cream-dark text-ink-muted'
+                step === s.num ? 'bg-srose text-white shadow-lg' :
+                step > s.num ? 'bg-srose-light text-white' :
+                'bg-scream-dark text-sink-muted'
               }`}>
                 {step > s.num ? '✓' : s.num}
               </div>
-              <span className={`text-xs hidden sm:block ${step === s.num ? 'text-rose-DEFAULT font-medium' : 'text-ink-muted'}`}>
+              <span className={`text-xs hidden sm:block ${step === s.num ? 'text-srose font-medium' : 'text-sink-muted'}`}>
                 {s.label}
               </span>
-              {i < steps.length - 1 && <div className="w-8 h-px bg-cream-darker mx-1" />}
+              {i < steps.length - 1 && <div className="w-8 h-px bg-scream-darker mx-1" />}
             </div>
           ))}
         </div>
@@ -162,7 +162,7 @@ export default function Onboarding() {
           {step === 2 && (
             <div className="fade-up">
               <div className="flex items-center gap-3 mb-6">
-                <CalendarDays className="w-5 h-5 text-rose-DEFAULT" />
+                <CalendarDays className="w-5 h-5 text-srose" />
                 <h2 className="section-title">The big day</h2>
               </div>
               <label className="label">Wedding date *</label>
@@ -170,7 +170,7 @@ export default function Onboarding() {
                 onChange={e => setWeddingDate(e.target.value)}
                 min={new Date().toISOString().split('T')[0]} />
               {weddingDate && (
-                <p className="mt-3 text-sm text-ink-muted font-body">
+                <p className="mt-3 text-sm text-sink-muted font-body">
                   🗓 That's {Math.ceil((new Date(weddingDate) - new Date()) / (1000 * 60 * 60 * 24))} days away!
                 </p>
               )}
@@ -181,22 +181,22 @@ export default function Onboarding() {
           {step === 3 && (
             <div className="fade-up">
               <div className="flex items-center gap-3 mb-6">
-                <Camera className="w-5 h-5 text-rose-DEFAULT" />
+                <Camera className="w-5 h-5 text-srose" />
                 <h2 className="section-title">A photo of you two</h2>
               </div>
-              <p className="text-sm text-ink-muted mb-4 font-body">This will appear on your planner dashboard. (Optional, JPG/PNG only)</p>
+              <p className="text-sm text-sink-muted mb-4 font-body">This will appear on your planner dashboard. (Optional, JPG/PNG only)</p>
 
               <label className="block cursor-pointer">
                 <div className={`border-2 border-dashed rounded-xl p-8 text-center transition-colors ${
-                  photoPreview ? 'border-rose-light' : 'border-cream-darker hover:border-rose-light'
+                  photoPreview ? 'border-srose-light' : 'border-scream-darker hover:border-srose-light'
                 }`}>
                   {photoPreview ? (
                     <img src={photoPreview} alt="Preview" className="w-32 h-32 rounded-full object-cover mx-auto shadow" />
                   ) : (
                     <div>
-                      <Camera className="w-10 h-10 text-ink-light mx-auto mb-2" />
-                      <p className="text-sm text-ink-muted">Click to upload a photo</p>
-                      <p className="text-xs text-ink-light mt-1">JPG or PNG</p>
+                      <Camera className="w-10 h-10 text-sink-light mx-auto mb-2" />
+                      <p className="text-sm text-sink-muted">Click to upload a photo</p>
+                      <p className="text-xs text-sink-light mt-1">JPG or PNG</p>
                     </div>
                   )}
                 </div>
@@ -229,7 +229,7 @@ export default function Onboarding() {
         </div>
 
         {step === 3 && (
-          <button onClick={handleComplete} className="block text-center text-sm text-ink-muted hover:text-rose-DEFAULT mt-4 w-full transition-colors">
+          <button onClick={handleComplete} className="block text-center text-sm text-sink-muted hover:text-srose mt-4 w-full transition-colors">
             Skip for now
           </button>
         )}

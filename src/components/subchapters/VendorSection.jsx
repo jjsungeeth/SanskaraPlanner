@@ -93,31 +93,31 @@ function VendorCard({ vendor, onBook, onDelete, onUpdate }) {
   const total = lineItems.reduce((s, li) => s + Number(li.price || 0), 0)
 
   return (
-    <div className={`card border-2 transition-all ${vendor.is_booked ? 'border-emerald-200 bg-emerald-50/20' : 'border-cream-darker'}`}>
+    <div className={`card border-2 transition-all ${vendor.is_booked ? 'border-emerald-200 bg-emerald-50/20' : 'border-scream-darker'}`}>
       {/* Header */}
       <div className="flex items-center gap-3">
         <button onClick={() => !vendor.is_booked && onBook(vendor)} title={vendor.is_booked ? 'Booked!' : 'Click to book'}>
           {vendor.is_booked
             ? <CheckCircle className="w-6 h-6 text-emerald-500 flex-shrink-0" />
-            : <Circle className="w-6 h-6 text-ink-light hover:text-rose-light flex-shrink-0 transition-colors" />}
+            : <Circle className="w-6 h-6 text-sink-light hover:text-srose-light flex-shrink-0 transition-colors" />}
         </button>
 
         {editingName ? (
           <div className="flex items-center gap-2 flex-1">
             <input value={nameVal} onChange={e => setNameVal(e.target.value)} className="input flex-1" autoFocus />
             <button onClick={saveName} className="text-emerald-600 hover:text-emerald-700"><Check className="w-4 h-4" /></button>
-            <button onClick={() => setEditingName(false)} className="text-ink-muted"><X className="w-4 h-4" /></button>
+            <button onClick={() => setEditingName(false)} className="text-sink-muted"><X className="w-4 h-4" /></button>
           </div>
         ) : (
           <div className="flex-1">
             <div className="flex items-center gap-2">
-              <h3 className="font-body font-medium text-ink">{vendor.vendor_name}</h3>
+              <h3 className="font-body font-medium text-sink">{vendor.vendor_name}</h3>
               {vendor.is_booked && <span className="badge-booked">✓ Booked</span>}
-              <button onClick={() => setEditingName(true)} className="text-ink-light hover:text-ink-muted">
+              <button onClick={() => setEditingName(true)} className="text-sink-light hover:text-sink-muted">
                 <Edit3 className="w-3.5 h-3.5" />
               </button>
             </div>
-            {total > 0 && <p className="text-sm text-ink-muted font-body">Total: <span className="font-medium text-ink">{fmt(total)}</span></p>}
+            {total > 0 && <p className="text-sm text-sink-muted font-body">Total: <span className="font-medium text-sink">{fmt(total)}</span></p>}
           </div>
         )}
 
@@ -127,10 +127,10 @@ function VendorCard({ vendor, onBook, onDelete, onUpdate }) {
               Book this vendor
             </button>
           )}
-          <button onClick={() => onDelete(vendor.id)} className="text-ink-light hover:text-red-500 transition-colors p-1">
+          <button onClick={() => onDelete(vendor.id)} className="text-sink-light hover:text-red-500 transition-colors p-1">
             <Trash2 className="w-4 h-4" />
           </button>
-          <button onClick={() => setExpanded(p => !p)} className="text-ink-muted hover:text-ink p-1">
+          <button onClick={() => setExpanded(p => !p)} className="text-sink-muted hover:text-sink p-1">
             {expanded ? <ChevronUp className="w-5 h-5" /> : <ChevronDown className="w-5 h-5" />}
           </button>
         </div>
@@ -138,14 +138,14 @@ function VendorCard({ vendor, onBook, onDelete, onUpdate }) {
 
       {/* Expanded content */}
       {expanded && (
-        <div className="mt-5 space-y-5 border-t border-cream-darker pt-5">
+        <div className="mt-5 space-y-5 border-t border-scream-darker pt-5">
           {/* Questions */}
           <div>
             <p className="label">Prompt questions</p>
             <div className="space-y-3">
               {questions.map((q, i) => (
                 <div key={i}>
-                  <p className="text-xs text-ink-muted mb-1 font-body">{q}</p>
+                  <p className="text-xs text-sink-muted mb-1 font-body">{q}</p>
                   <input
                     className="input text-sm"
                     placeholder="Your answer…"
@@ -178,12 +178,12 @@ function VendorCard({ vendor, onBook, onDelete, onUpdate }) {
             </div>
 
             {loadingItems ? (
-              <p className="text-sm text-ink-muted italic">Loading…</p>
+              <p className="text-sm text-sink-muted italic">Loading…</p>
             ) : (
               <div className="overflow-x-auto">
                 <table className="w-full text-sm font-body">
                   <thead>
-                    <tr className="text-left text-ink-muted border-b border-cream-darker">
+                    <tr className="text-left text-sink-muted border-b border-scream-darker">
                       <th className="pb-2 font-medium w-1/4">Category</th>
                       <th className="pb-2 font-medium">Description</th>
                       <th className="pb-2 font-medium text-right w-28">Price (R)</th>
@@ -192,7 +192,7 @@ function VendorCard({ vendor, onBook, onDelete, onUpdate }) {
                   </thead>
                   <tbody>
                     {lineItems.map(li => (
-                      <tr key={li.id} className="border-b border-cream-darker/50">
+                      <tr key={li.id} className="border-b border-scream-darker/50">
                         <td className="py-1.5 pr-2">
                           <input value={li.category} onChange={e => updateLineItem(li.id, 'category', e.target.value)}
                             className="input py-1 text-xs" placeholder="e.g. Mains" />
@@ -206,7 +206,7 @@ function VendorCard({ vendor, onBook, onDelete, onUpdate }) {
                             className="input py-1 text-xs text-right" placeholder="0" />
                         </td>
                         <td className="py-1.5">
-                          <button onClick={() => deleteLineItem(li.id)} className="text-ink-light hover:text-red-500 transition-colors">
+                          <button onClick={() => deleteLineItem(li.id)} className="text-sink-light hover:text-red-500 transition-colors">
                             <Trash2 className="w-3.5 h-3.5" />
                           </button>
                         </td>
@@ -214,13 +214,13 @@ function VendorCard({ vendor, onBook, onDelete, onUpdate }) {
                     ))}
                     {lineItems.length > 0 && (
                       <tr className="font-semibold">
-                        <td colSpan={2} className="py-2 text-right pr-2 text-ink-muted">Total</td>
-                        <td className="py-2 text-right text-rose-DEFAULT">{fmt(total)}</td>
+                        <td colSpan={2} className="py-2 text-right pr-2 text-sink-muted">Total</td>
+                        <td className="py-2 text-right text-srose">{fmt(total)}</td>
                         <td />
                       </tr>
                     )}
                     {lineItems.length === 0 && (
-                      <tr><td colSpan={4} className="py-4 text-center text-ink-muted italic text-sm">No items yet — click "Add row" to start</td></tr>
+                      <tr><td colSpan={4} className="py-4 text-center text-sink-muted italic text-sm">No items yet — click "Add row" to start</td></tr>
                     )}
                   </tbody>
                 </table>
@@ -275,7 +275,7 @@ export default function VendorSection({ chapterId, category, title }) {
     setVendors(p => p.map(v => v.id === updated.id ? updated : v))
   }
 
-  if (loading) return <div className="p-8 text-ink-muted text-sm">Loading…</div>
+  if (loading) return <div className="p-8 text-sink-muted text-sm">Loading…</div>
 
   return (
     <div className="space-y-5 fade-up max-w-3xl">
@@ -286,14 +286,14 @@ export default function VendorSection({ chapterId, category, title }) {
         </button>
       </div>
 
-      <p className="text-sm text-ink-muted font-body">
+      <p className="text-sm text-sink-muted font-body">
         Add multiple quotes below. When you're happy with a vendor, click the circle to mark them as booked — this updates your budget automatically.
       </p>
 
       {vendors.length === 0 ? (
         <div className="card text-center py-12">
-          <p className="font-display text-2xl text-ink-light mb-2">No {title.toLowerCase()} quotes yet</p>
-          <p className="text-sm text-ink-muted font-body mb-4">Add your first vendor quote to get started</p>
+          <p className="font-display text-2xl text-sink-light mb-2">No {title.toLowerCase()} quotes yet</p>
+          <p className="text-sm text-sink-muted font-body mb-4">Add your first vendor quote to get started</p>
           <button onClick={addVendor} className="btn-primary mx-auto flex items-center gap-2">
             <Plus className="w-4 h-4" /> Add first quote
           </button>

@@ -40,7 +40,7 @@ export function Stationery({ chapterId }) {
     <div className="space-y-5 fade-up max-w-2xl">
       <h2 className="page-title">Stationery</h2>
       <div className="card space-y-4">
-        <p className="text-sm text-ink-muted font-body">Answer the prompts below and add any extra notes.</p>
+        <p className="text-sm text-sink-muted font-body">Answer the prompts below and add any extra notes.</p>
         {STATIONERY_QUESTIONS.map((q, i) => (
           <div key={i}>
             <label className="label">{q}</label>
